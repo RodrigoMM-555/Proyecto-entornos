@@ -17,9 +17,7 @@ CREATE TABLE polideportivos (
     direccion VARCHAR(255) NOT NULL
 );
 
-
-
-
+--En revision: ¿una tabla general de pistas o una tabla por deporte?
 CREATE TABLE pistas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     polideportivo_id INT,
@@ -28,8 +26,6 @@ CREATE TABLE pistas (
     caracteristicas TEXT,
     FOREIGN KEY (polideportivo_id) REFERENCES polideportivos(id)
 );
-
-
 
 
 CREATE TABLE reservas (
