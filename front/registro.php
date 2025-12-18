@@ -11,7 +11,7 @@
         <h2>Registrarse</h2>
         <form action="controladores/procesar_registro.php" method="POST">
             <input type="text" id="email" name="email" placeholder="Email:" required ><br><br>
-            <input type="password" id="contra" name="contra" minlength="6" placeholder="Contraseña:" required><br><br>
+            <input type="password" id="password" name="password" minlength="6" placeholder="Contraseña:" required><br><br>
             <input type="submit" value="Registrarse">
         </form>
     </main>

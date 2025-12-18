@@ -1,5 +1,5 @@
 <?php
-include 'inc/conexion_bd.php';
+include '../inc/conexion_bd.php';
 
 $email = trim($_POST['email']);
 $password = $_POST['password'];
@@ -9,9 +9,14 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     die("Email no válido");
 }
 
-// Validar contraseña (mínimo 6 caracteres)
-if (strlen($password) < 6) {
-    die("La contraseña debe tener al menos 6 caracteres");
+//Validar contraseña
+// Verificar longitud
+if (strlen($password) < 8 || strlen($password) > 24) {
+    die("La contraseña debe tener entre 8 y 24 caracteres");
+}
+// Verificar que solo tenga letras y números
+if (!preg_match('/^[a-zA-Z0-9]+$/', $password)) {
+    die("La contraseña solo puede contener letras y números, sin caracteres especiales");
 }
 
 // Verificar si el email ya existe
@@ -27,7 +32,7 @@ if ($stmt->num_rows > 0) {
 }
 
 // Insertar usuario
-$sql = "INSERT INTO usuarios (email, password) VALUES (:email, :password)";
+$sql = "INSERT INTO usuarios VALUES (NULL, :email, :password)";
 $stmt = $conexion->prepare($sql);
 $stmt->execute([
     ':email' => $email,
