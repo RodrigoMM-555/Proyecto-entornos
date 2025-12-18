@@ -31,3 +31,5 @@ if ($password === $stored_password) {
 }
 
 echo "Usuario registrado correctamente";
+header("Location: ../menu.php");
+?>

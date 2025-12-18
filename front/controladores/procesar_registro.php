@@ -40,3 +40,5 @@ $stmt->execute([
 ]);
 
 echo "Usuario registrado correctamente";
+header("Location: ../index.php");
+?>
