@@ -1,5 +1,4 @@
 <?php
-$error = false;
 include '../inc/conexion_bd.php';
 
 $email = trim($_POST['email']);
@@ -14,7 +13,7 @@ $resultado = $stmt->get_result();
 
 if ($resultado->num_rows === 0) {
     $error = true;
-    include '../index.php';
+    header("Location: ../index.php?error=invalid");
     exit;
 }
 
@@ -27,8 +26,7 @@ $stmt->execute();
 $stored_password = $stmt->get_result()->fetch_assoc()['password'];
 
 if ($password !== $stored_password) {
-    $error = true;
-    include '../index.php';
+    header("Location: ../index.php?error=invalid");
     exit;
 }
 

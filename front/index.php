@@ -105,7 +105,7 @@
     }
 </style>
 <?php
-if (isset($error) && $error) {
+if (isset($_GET["error"]) && $_GET["error"] == "invalid") {
     echo "<script>
         document.querySelector('form p').style.display = 'block';
     </script>";

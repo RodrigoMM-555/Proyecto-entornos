@@ -11,10 +11,10 @@
         <h2>Registrarse</h2>
         <form action="controladores/procesar_registro.php" method="POST">
             <input type="text" id="email" name="email" placeholder="Email:" required ><br><br>
-            <p class="e">Email invalido</p>
             <input type="password" id="password" name="password" minlength="6" placeholder="Contraseña:" required><br><br>
-            <p class="1">La contraseña debe tener entre 8 y 24 caracteres</p>
-            <p class="2">La contraseña no puede tener caracteres especiales</p>
+            <p class="email_invalid">Email invalido</p>
+            <p class="password_length">La contraseña debe tener entre 8 y 24 caracteres</p>
+            <p class="password_special">La contraseña no puede tener caracteres especiales</p>
             <input type="submit" value="Registrarse">
         </form>
     </main>
@@ -107,31 +107,31 @@
     }
 </style>
 <?php
-if (isset($errore) && $errore) {
+if (isset($_GET["error"]) && $_GET["error"] == "email_invalid") {
     echo "<script>
-        document.querySelector('form p.e').style.display = 'block';
+        document.querySelector('form p.email_invalid').style.display = 'block';
     </script>";
 } else {
     echo "<script>
-        document.querySelector('form p').style.display = 'none';
+        document.querySelector('form p.email_invalid').style.display = 'none';
     </script>";
 }
-if (isset($error1) && $error1) {
+if (isset($_GET["error"]) && $_GET["error"] == "password_length") {
     echo "<script>
-        document.querySelector('form p.1').style.display = 'block';
+        document.querySelector('form p.password_length').style.display = 'block';
     </script>";
 } else {
     echo "<script>
-        document.querySelector('form p.1').style.display = 'none';
+        document.querySelector('form p.password_length').style.display = 'none';
     </script>";
 }
-if (isset($error2) && $error2) {
+if (isset($_GET["error"]) && $_GET["error"] == "password_special") {
     echo "<script>
-        document.querySelector('form p.2').style.display = 'block';
+        document.querySelector('form p.password_special').style.display = 'block';
     </script>";
 } else {
     echo "<script>
-        document.querySelector('form p.2').style.display = 'none';
+        document.querySelector('form p.password_special').style.display = 'none';
     </script>";
 }
 ?>
