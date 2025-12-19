@@ -20,24 +20,21 @@ if (!preg_match('/^[a-zA-Z0-9]+$/', $password)) {
 }
 
 // Verificar si el email ya existe
-$sql = "SELECT id FROM usuarios WHERE email = :email LIMIT 1";
-$stmt = $conexion->prepare($sql);
-$stmt->execute([':email' => $email]);
+$sql = "SELECT id FROM usuarios WHERE email = ? LIMIT 1";
+$stmt = $conexion->prepare(query: $sql);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$resultado = $stmt->get_result();
 
-// Guardar resultado para poder usar num_rows
-$stmt->store_result();
-
-if ($stmt->num_rows > 0) {
+if ($resultado->num_rows > 0) {
     die("Este email ya está registrado");
 }
 
-// Insertar usuario
-$sql = "INSERT INTO usuarios VALUES (NULL, :email, :password)";
+// Insertar nuevo usuario
+$sql = "INSERT INTO usuarios (id, email, password) VALUES (NULL, ?, ?)";
 $stmt = $conexion->prepare($sql);
-$stmt->execute([
-    ':email' => $email,
-    ':password' => $password
-]);
+$stmt->bind_param("ss", $email, $password);
+$stmt->execute();
 
 echo "Usuario registrado correctamente";
 header("Location: ../index.php");

@@ -4,32 +4,29 @@ include '../inc/conexion_bd.php';
 $email = trim($_POST['email']);
 $password = $_POST['password'];
 
-// Verificar si el email ya existe
-$sql = "SELECT id FROM usuarios WHERE email = :email LIMIT 1";
+// Verificar si el email existe
+$sql = "SELECT id FROM usuarios WHERE email = ? LIMIT 1";
 $stmt = $conexion->prepare($sql);
-$stmt->execute([':email' => $email]);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$resultado = $stmt->get_result();
 
-$stmt->store_result();
-
-if ($stmt->num_rows < 0) {
+if ($resultado->num_rows === 0) {
     die("Este email no está registrado");
 }
 
 // Comprobar contraseña
-$sql = "SELECT password FROM usuarios WHERE email = :email LIMIT 1";
+$sql = "SELECT password FROM usuarios WHERE email = ? LIMIT 1";
 $stmt = $conexion->prepare($sql);
-$stmt->execute([':email' => $email]);
+$stmt->bind_param("s", $email);
+$stmt->execute();
 
-// Dar acceso al usuario
-$stmt->bind_result($stored_password);
-$stmt->fetch();
+$stored_password = $stmt->get_result()->fetch_assoc()['password'];
 
-if ($password === $stored_password) {
-    echo "Acceso concedido";
-} else {
+if ($password !== $stored_password) {
     die("Contraseña incorrecta");
 }
 
-echo "Usuario registrado correctamente";
+// Login correcto
 header("Location: ../menu.php");
-?>
+exit;
