@@ -11,10 +11,10 @@
         <h1>Reserva pistas polideportivos</h1>
         <nav>
             <ul>
-                <li><a href=".php">Tenis</a></li>
-                <li><a href=".php">Padel</a></li>
-                <li><a href=".php">Futbol</a></li>
-                <li><a href=".php">Baloncesto</a></li>
+                <li><h2><a href=".php">Tenis</a></h2></li>
+                <li><h2><a href=".php">Padel</a></h2></li>
+                <li><h2><a href=".php">Futbol</a></h2></li>
+                <li><h2><a href=".php">Baloncesto</a></h2></li>
             </ul>
         </nav>
     </header>
@@ -30,11 +30,11 @@
         width:100%;
         justify-content:center;
         list-style-type:none;
-        padding:0px;
-        margin:0px;
+
     }
     nav ul li{
-        padding:0px;
-        margin:0px;
+        background: lightgreen;
+        width: 100%;
+        margin-inline: 10px;
     }
 </style>
