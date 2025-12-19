@@ -18,6 +18,7 @@
                 <h2><a href=".php">Padel</a></h2>
                 <h2><a href=".php">Futbol</a></h2>
                 <h2><a href=".php">Baloncesto</a></h2>
+                <h2><a href =".php>Fronton</a></h2>
             </ul>
         </nav>
     </header>
