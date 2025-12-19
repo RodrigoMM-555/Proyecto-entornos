@@ -1,4 +1,5 @@
 <?php
+$error = false;
 include '../inc/conexion_bd.php';
 
 $email = trim($_POST['email']);
@@ -12,7 +13,9 @@ $stmt->execute();
 $resultado = $stmt->get_result();
 
 if ($resultado->num_rows === 0) {
-    die("Este email no está registrado");
+    $error = true;
+    include '../index.php';
+    exit;
 }
 
 // Comprobar contraseña
@@ -24,7 +27,9 @@ $stmt->execute();
 $stored_password = $stmt->get_result()->fetch_assoc()['password'];
 
 if ($password !== $stored_password) {
-    die("Contraseña incorrecta");
+    $error = true;
+    include '../index.php';
+    exit;
 }
 
 // Login correcto

@@ -1,4 +1,7 @@
 <?php
+$errore = false;
+$error1 = false;
+$error2 = false;
 include '../inc/conexion_bd.php';
 
 $email = trim($_POST['email']);
@@ -6,17 +9,23 @@ $password = $_POST['password'];
 
 // Validar email
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    die("Email no válido");
+    $errore = true;
+    include '../registro.php';
+    exit;
 }
 
 //Validar contraseña
 // Verificar longitud
 if (strlen($password) < 8 || strlen($password) > 24) {
-    die("La contraseña debe tener entre 8 y 24 caracteres");
+    $error1 = true;
+    include '../registro.php';
+    exit;
 }
 // Verificar que solo tenga letras y números
 if (!preg_match('/^[a-zA-Z0-9]+$/', $password)) {
-    die("La contraseña solo puede contener letras y números, sin caracteres especiales");
+    $error2 = true;
+    include '../registro.php';
+    exit;
 }
 
 // Verificar si el email ya existe
@@ -27,7 +36,9 @@ $stmt->execute();
 $resultado = $stmt->get_result();
 
 if ($resultado->num_rows > 0) {
-    die("Este email ya está registrado");
+    $errore = true;
+    include '../registro.php';
+    exit;
 }
 
 // Insertar nuevo usuario

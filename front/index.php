@@ -12,6 +12,7 @@
         <form action="controladores/procesar_login.php" method="POST">
             <input type="text" id="email" name="email" placeholder="Email:" required ><br><br>
             <input type="password" id="password" name="password" placeholder="Contraseña:" required><br><br>
+            <p>Email o contraseña incorrectos</p>
             <input type="submit" value="Iniciar sesión">
         </form>
         <a href="registro.php">Registrarse</a>
@@ -82,6 +83,13 @@
         box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
 
+    form p {
+        display: none;
+        color: red;
+        font-weight: 500;
+        margin-top: 0px;
+    }
+
     a {
         display: inline-block;
         margin-top: 20px;
@@ -96,6 +104,17 @@
         text-decoration: underline;
     }
 </style>
+<?php
+if (isset($error) && $error) {
+    echo "<script>
+        document.querySelector('form p').style.display = 'block';
+    </script>";
+} else {
+    echo "<script>
+        document.querySelector('form p').style.display = 'none';
+    </script>";
+}
+?>
 
 </html>
 

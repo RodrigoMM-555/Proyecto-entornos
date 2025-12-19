@@ -11,7 +11,10 @@
         <h2>Registrarse</h2>
         <form action="controladores/procesar_registro.php" method="POST">
             <input type="text" id="email" name="email" placeholder="Email:" required ><br><br>
+            <p class="e">Email invalido</p>
             <input type="password" id="password" name="password" minlength="6" placeholder="Contraseña:" required><br><br>
+            <p class="1">La contraseña debe tener entre 8 y 24 caracteres</p>
+            <p class="2">La contraseña no puede tener caracteres especiales</p>
             <input type="submit" value="Registrarse">
         </form>
     </main>
@@ -82,6 +85,13 @@
         box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
 
+    form p {
+        display: none;
+        color: red;
+        font-weight: 500;
+        margin-top: 0px;
+    }
+
     a {
         display: inline-block;
         margin-top: 20px;
@@ -96,7 +106,34 @@
         text-decoration: underline;
     }
 </style>
-
-</style>
+<?php
+if (isset($errore) && $errore) {
+    echo "<script>
+        document.querySelector('form p.e').style.display = 'block';
+    </script>";
+} else {
+    echo "<script>
+        document.querySelector('form p').style.display = 'none';
+    </script>";
+}
+if (isset($error1) && $error1) {
+    echo "<script>
+        document.querySelector('form p.1').style.display = 'block';
+    </script>";
+} else {
+    echo "<script>
+        document.querySelector('form p.1').style.display = 'none';
+    </script>";
+}
+if (isset($error2) && $error2) {
+    echo "<script>
+        document.querySelector('form p.2').style.display = 'block';
+    </script>";
+} else {
+    echo "<script>
+        document.querySelector('form p.2').style.display = 'none';
+    </script>";
+}
+?>
 </html>
 
