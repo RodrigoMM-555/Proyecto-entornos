@@ -1,4 +1,4 @@
---Tabla para usuarios       Se añaden con el registro y se compuevan con el login
+--Tabla para usuarios       Se añaden con el registro y se compruevan con el login
 --Tablas de pistas          ¿Queremos una tabla por deporte o una tabla general?
 --Tabla para reservas       Tabla que relacione usuarios y pistas con fecha y hora
 
@@ -21,7 +21,7 @@ CREATE TABLE polideportivos (
 CREATE TABLE pistas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     polideportivo_id INT,
-    nombre VARCHAR(100) NOT NULL,
+    max_personas INT CHECK (max_personas BETWEEN 1 AND 30),
     deporte VARCHAR(50) NOT NULL,
     caracteristicas TEXT,
     FOREIGN KEY (polideportivo_id) REFERENCES polideportivos(id)
