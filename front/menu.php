@@ -20,6 +20,5 @@ include("inc/header.php");
     }
     $conexion->close();
 
-
 include("inc/footer.php");
 ?>
