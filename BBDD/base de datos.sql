@@ -21,6 +21,7 @@ CREATE TABLE pistas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     polideportivo_id INT,
     max_personas INT CHECK (max_personas BETWEEN 1 AND 30),
+    precio DECIMAL (10,2),
     deporte VARCHAR(50) NOT NULL,
     caracteristicas TEXT,
     FOREIGN KEY (polideportivo_id) REFERENCES polideportivos(id)
