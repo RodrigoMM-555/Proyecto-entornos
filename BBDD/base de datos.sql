@@ -32,8 +32,7 @@ CREATE TABLE reservas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT,
     pista_id INT,
-    fecha DATE NOT NULL,
-    hora TIME NOT NULL,
+    fecha_hora DATETIME,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
     FOREIGN KEY (pista_id) REFERENCES pistas(id)
 );
