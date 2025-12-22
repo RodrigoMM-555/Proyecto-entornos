@@ -38,6 +38,22 @@ include("inc/header.php");
         <div>
             <h3>Pista de <?= $fila['deporte'] ?></h3>
             <p>Precio: <?= $fila['precio'] ?>€/hora</p>
+
+            <form action="reservar.php" method="POST">
+            <select multiple name="horario">
+                <?php
+                for ($i = 8; $i <= 20; $i++) {
+                    echo "
+                <label>
+                    <input type='radio' name='horario' value='".$i.":00'>
+                    <span>".$i.":00</span>
+                </label>";
+                }
+                ?>
+            </select>
+            <button type="submit">Reservar</button>
+        </form>
+
         </div>
         <!-- Cierre de conexion -->
         <?php
