@@ -2,19 +2,18 @@
 include("inc/conexion_bd.php");
 include("inc/header.php");
 
-//Hay que crear un for para mostrar todos los polideportivos que hya en la BBDD
-    $conexion = new mysqli($host, $user, $pass, $db);
-
-    $sql = "SELECT * FROM producto;";
+    $sql = "SELECT * FROM polideportivos;";
 
     $resultado = $conexion->query($sql);
     while ($fila = $resultado->fetch_assoc()) {
 ?>
     <article>
-        <div class="imagen"></div>
-        <h3><?= $fila['nombre'] ?></h3>
-        <p><?= $fila['direccion'] ?></p>
-        <a href="polideportivo.php?id=<?= $fila['id'] ?>">Comprar</a>
+        <img src="" alt="Placeholder">
+        <div>
+            <h3><?= $fila['nombre'] ?></h3>
+            <p><?= $fila['direccion'] ?></p>
+            <a href="polideportivos.php?id=<?= $fila['id'] ?>">Ver mas</a>
+        </div>
     </article>
 <?php
     }
@@ -22,3 +21,31 @@ include("inc/header.php");
 
 include("inc/footer.php");
 ?>
+
+<style>
+    article{
+        justify-content: center;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        margin: 30px;
+    }
+    article div{
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    article div a{
+        text-decoration: none;
+        color: #2f4f3a;
+        padding: 8px 18px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        background-color: transparent;
+    }
+    article div a:hover {
+        background-color: #8bc6a8;
+        color: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+</style>

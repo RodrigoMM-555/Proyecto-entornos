@@ -12,7 +12,7 @@
             <img src="../imagenes/logo.png" alt="logo">
             <h1>Book a court</h1>
         </div>
-        <nav>
+        <!-- <nav>
             <ul>
                 <h2><a href=".php">Tenis</a></h2>
                 <h2><a href=".php">Padel</a></h2>
@@ -20,7 +20,7 @@
                 <h2><a href=".php">Baloncesto</a></h2>
                 <h2><a href=".php">Fronton</a></h2>
             </ul>
-        </nav>
+        </nav> -->
     </header>
     <main>
 
@@ -71,7 +71,7 @@
         padding: 15px 0;
         background-color: #f0f1e9;
     }
-
+/* 
     nav ul h2 {
         font-size: 1.2rem;
     }
@@ -90,4 +90,5 @@
         color: white;
         box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
+ */
 </style>

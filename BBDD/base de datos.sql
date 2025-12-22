@@ -1,6 +1,3 @@
---Tabla para usuarios       Se añaden con el registro y se compruevan con el login
---Tablas de pistas          ¿Queremos una tabla por deporte o una tabla general?
---Tabla para reservas       Tabla que relacione usuarios y pistas con fecha y hora
 
 CREATE DATABASE reserva_pistas;
 USE reserva_pistas;
@@ -11,12 +8,14 @@ CREATE TABLE usuarios (
     password VARCHAR(255) NOT NULL
 );
 
+-- ¿Deveriamos añadir un campo de imagenes?
 CREATE TABLE polideportivos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     direccion VARCHAR(255) NOT NULL
 );
 
+-- ¿Deveriamos añadir un campo de imagenes?
 CREATE TABLE pistas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     polideportivo_id INT,
@@ -26,7 +25,6 @@ CREATE TABLE pistas (
     caracteristicas TEXT,
     FOREIGN KEY (polideportivo_id) REFERENCES polideportivos(id)
 );
-
 
 CREATE TABLE reservas (
     id INT AUTO_INCREMENT PRIMARY KEY,
