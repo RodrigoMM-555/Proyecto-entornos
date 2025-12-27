@@ -9,7 +9,7 @@ include("inc/header.php");
             $sql = "SELECT * FROM polideportivos WHERE id = ".$_GET['id'].";";
 
             $resultado = $conexion->query($sql);
-            while ($fila = $resultado->fetch_assoc()) {
+            $fila = $resultado->fetch_assoc();
         ?>
 
         <img src="<?= $fila['imagen'] ?>" alt="Placeholder">
@@ -18,9 +18,6 @@ include("inc/header.php");
             <p><?= $fila['direccion'] ?></p>
         </div>
 
-        <?php
-        }
-        ?>
 
     </section>
 
@@ -40,15 +37,20 @@ include("inc/header.php");
             <p>Precio: <?= $fila['precio'] ?>€/hora</p>
 
             <form action="reserva.php" method="POST">
+                <!-- Campo para seleccionar la fecha -->
+                <label for="fecha">Selecciona la fecha:</label>
+                <input type="date" name="fecha" required>
+
                 <?php
                 for ($i = 8; $i <= 19; $i++) {
                     echo "
-                        <input type='submit' name='horario' value='".$i.":00'>
+                        <input type='submit' name='hora' value='".$i.":00'>
                         <input type='hidden' name='pista_id' value='".$fila['id']."'>
                     ";
-                    }
+                }
                 ?>
             </form>
+
 
         </div>
         <p><?= $fila['caracteristicas'] ?></p>
