@@ -8,19 +8,19 @@ CREATE TABLE usuarios (
     password VARCHAR(255) NOT NULL
 );
 
--- ¿Deveriamos añadir un campo de imagenes?
 CREATE TABLE polideportivos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    direccion VARCHAR(255) NOT NULL
+    direccion VARCHAR(255) NOT NULL,
+    imagen VARCHAR(250)
 );
 
--- ¿Deveriamos añadir un campo de imagenes?
 CREATE TABLE pistas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     polideportivo_id INT,
     max_personas INT CHECK (max_personas BETWEEN 1 AND 30),
     precio DECIMAL (10,2),
+    imagen VARCHAR(250),
     deporte VARCHAR(50) NOT NULL,
     caracteristicas TEXT,
     FOREIGN KEY (polideportivo_id) REFERENCES polideportivos(id)

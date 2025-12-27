@@ -12,7 +12,7 @@ include("inc/header.php");
             while ($fila = $resultado->fetch_assoc()) {
         ?>
 
-        <img src="" alt="Placeholder">
+        <img src="<?= $fila['imagen'] ?>" alt="Placeholder">
         <div>
             <h3><?= $fila['nombre'] ?></h3>
             <p><?= $fila['direccion'] ?></p>
@@ -34,27 +34,24 @@ include("inc/header.php");
             while ($fila = $resultado->fetch_assoc()) {
         ?>
         <!-- Articulos -->
-        <img src="" alt="Placeholder">
+        <img src="<?= $fila['imagen'] ?>" alt="Placeholder">
         <div>
             <h3>Pista de <?= $fila['deporte'] ?></h3>
             <p>Precio: <?= $fila['precio'] ?>€/hora</p>
 
-            <form action="reservar.php" method="POST">
-            <select multiple name="horario">
+            <form action="reserva.php" method="POST">
                 <?php
-                for ($i = 8; $i <= 20; $i++) {
+                for ($i = 8; $i <= 19; $i++) {
                     echo "
-                <label>
-                    <input type='radio' name='horario' value='".$i.":00'>
-                    <span>".$i.":00</span>
-                </label>";
-                }
+                        <input type='submit' name='horario' value='".$i.":00'>
+                        <input type='hidden' name='pista_id' value='".$fila['id']."'>
+                    ";
+                    }
                 ?>
-            </select>
-            <button type="submit">Reservar</button>
-        </form>
+            </form>
 
         </div>
+        <p><?= $fila['caracteristicas'] ?></p>
         <!-- Cierre de conexion -->
         <?php
         }
