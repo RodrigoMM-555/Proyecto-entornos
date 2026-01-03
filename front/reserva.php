@@ -2,6 +2,8 @@
 include("inc/conexion_bd.php");
 include("inc/header.php");
 
+$c = $_GET['c'];
+
 $fecha = $_POST['fecha'];
 $hora = $_POST['hora'];
 $pista_id = $_POST['pista_id'];
@@ -14,7 +16,7 @@ $fila = $resultado->fetch_assoc();
 <div>
     <p>Reservar la pista de <?= $fila['deporte'] ?> de <?= $hora ?> a <?= $hora + 1 ?>:00 el <?= $fecha ?></p>
     
-    <form action="controladores/procesa_reserva.php" method="POST">
+    <form action="controladores/procesa_reserva.php?c=<?= $c ?>" method="POST">
         <input type="hidden" name="pista_id" value="<?= $pista_id ?>">
         <input type="hidden" name="fecha" value="<?= $fecha ?>">
         <input type="hidden" name="hora" value="<?= $hora ?>">

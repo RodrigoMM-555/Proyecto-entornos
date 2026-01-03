@@ -31,5 +31,5 @@ if ($password !== $stored_password) {
 }
 
 // Login correcto
-header("Location: ../menu.php");
+header("Location: ../menu.php?c=$email");
 exit;

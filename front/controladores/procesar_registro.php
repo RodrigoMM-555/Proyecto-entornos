@@ -1,5 +1,5 @@
 <?php
-include '../inc/conexion_bd.php';
+include '../inc/conexion_bd.php?';
 
 $email = trim($_POST['email']);
 $password = $_POST['password'];
