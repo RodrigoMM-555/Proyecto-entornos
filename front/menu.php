@@ -10,7 +10,7 @@ $c = $_GET['c'];
     while ($fila = $resultado->fetch_assoc()) {
 ?>
     <article>
-        <img src="<?= ['imagen'] ?>" alt="Placeholder">
+        <img src="<?= $fila['imagen'] ?>" alt="Placeholder">
         <div>
             <h3><?= $fila['nombre'] ?></h3>
             <p><?= $fila['direccion'] ?></p>

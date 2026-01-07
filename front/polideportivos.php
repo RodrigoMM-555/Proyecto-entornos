@@ -181,7 +181,7 @@ include("inc/footer.php");
     }
 
     form input[type="date"] {
-        padding: 8px 12px;
+        padding: 8px 8px;
         border-radius: 10px;
         border: 1px solid #b2cdab;
         outline: none;
