@@ -1,6 +1,6 @@
     <main>
     <footer>
-        <p>2024 Proyecto Entornos. Todos los derechos reservados</p>
+        <p>2025 Proyecto Entornos | Rodrigo Menéndez Molina · Pau Contreras Romero</p>
     </footer>
 </body>
 </html>
