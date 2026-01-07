@@ -20,35 +20,13 @@
         }
     ?>
     <div class="control_formulario">
-        <label>Insertar</label>
         <input type="submit" value="Insertar">
     </div>
 </form>
-<style>
-    form{
-        width:100%;
-        display:flex;
-        flex-direction:column;
-        gap:20px;
-    }
-    .control_formulario{
-        display:flex;
-    }
-    label{
-        flex:1;
-    }
-    input{
-        flex:4;
-        padding:10px;
-        border:2px solid gold;
-    }
-    input[type="submit"]{
-        background:gold;
-        color:white;
-        border:none;
-        cursor:pointer;
-    }
-</style>
+
+<link rel="stylesheet" href="css/estilo.css">
+
+
 
 
 
