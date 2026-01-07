@@ -6,3 +6,4 @@
 6. Mejorar en general la estetica de la aplicacion y hacerla mas uniforme
 7. Codificar las contraseñas
 8. No se muestra el maximo de personas por pista, ¿lo quitamos, lo mostramos al aldo de caracteristicas?
+9. Terminar el CRUD del back, falta eliminar y actualizar, ya se puede leer y añadir
