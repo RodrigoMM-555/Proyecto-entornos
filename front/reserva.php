@@ -11,10 +11,12 @@ $pista_id = $_POST['pista_id'];
 $sql = "SELECT * FROM pistas WHERE id = ".$pista_id.";";
 $resultado = $conexion->query($sql);
 $fila = $resultado->fetch_assoc();
+
+$hora_num = (int)explode(':', $hora)[0];  // Extraemos solo la hora numérica
 ?>
 
 <div>
-    <p>Reservar la pista de <?= $fila['deporte'] ?> de <?= $hora ?> a <?= $hora + 1 ?>:00 el <?= $fecha ?></p>
+    <p>Reservar la pista de <?= $fila['deporte'] ?> de <?= $hora_num ?> a <?= $hora_num + 1 ?>:00 el <?= $fecha ?></p>
     
     <form action="controladores/procesa_reserva.php?c=<?= $c ?>" method="POST">
         <input type="hidden" name="pista_id" value="<?= $pista_id ?>">

@@ -34,8 +34,8 @@ $c = $_GET['c'];
             while ($fila = $resultado->fetch_assoc()) {
         ?>
         <!-- Articulos -->
-        <img src="<?= $fila['imagen'] ?>" alt="Placeholder">
         <div>
+            <img src="<?= $fila['imagen'] ?>" alt="Placeholder">
             <h3>Pista de <?= $fila['deporte'] ?></h3>
             <p>Precio: <?= $fila['precio'] ?>€/hora</p>
 
@@ -53,10 +53,8 @@ $c = $_GET['c'];
                 }
                 ?>
             </form>
-
-
+            <p><?= $fila['max_personas'] ?> personas - <?= $fila['caracteristicas'] ?></p>
         </div>
-        <p><?= $fila['caracteristicas'] ?></p>
         <!-- Cierre de conexion -->
         <?php
         }
