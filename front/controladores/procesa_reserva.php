@@ -1,45 +1,50 @@
 <?php
 include("../inc/conexion_bd.php");
 
+session_start();
+unset($_SESSION['pista_id'], $_SESSION['fecha'], $_SESSION['hora']);
+
 $pista_id = $_POST['pista_id'];
 $fecha = $_POST['fecha'];
 $hora = $_POST['hora'];
 $fecha_hora = $fecha . ' ' . $hora . ":00";
 $c= $_GET['c'];
 
-// Verificar si ya existe una reserva para esa pista y hora
-$sql = "SELECT id FROM reservas WHERE pista_id = ? AND fecha_hora = ? LIMIT 1";
-$stmt = $conexion->prepare($sql);
+// Verificar si ya existe una reserva
+$stmt = $conexion->prepare("SELECT id FROM reservas WHERE pista_id = ? AND fecha_hora = ? LIMIT 1");
 $stmt->bind_param("is", $pista_id, $fecha_hora);
 $stmt->execute();
-$stmt->store_result();  // Almacenamos el resultado para saber cuántos registros hay
+$stmt->store_result();
 
-// Si ya existe una reserva, redirigimos con un error
+//Confirma o no la reserva
+$confirmacion = 'exito';
 if ($stmt->num_rows > 0) {
-    echo "La pista ya está reservada para esa fecha y hora.";
-    exit;
+    $confirmacion = 'error';
+
+//En caso de confirmar
+} else {
+    // Obtener usuario
+    $stmt = $conexion->prepare("SELECT id FROM usuarios WHERE email = ? LIMIT 1");
+    $stmt->bind_param("s", $c);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    $fila = $resultado->fetch_assoc();
+    $usuario_id = $fila['id'];
+
+    // Insertar reserva
+    $sql = "INSERT INTO reservas VALUES (NULL, $usuario_id, $pista_id, '$fecha_hora')";
+    $conexion->query($sql);
 }
 
-//Obtener el id del usuario a partir del email
-$sql = "SELECT id FROM usuarios WHERE email = ? LIMIT 1";
-$stmt = $conexion->prepare($sql);
-$stmt->bind_param("s", $c);
-$stmt->execute();
-$resultado = $stmt->get_result();
-$fila = $resultado->fetch_assoc();
-$usuario_id = $fila['id'];
-
-// Si no hay conflicto, procedemos a insertar la nueva reserva
-$sql = "INSERT INTO reservas VALUES (
-    NULL,
-    ".$usuario_id.",
-    ".$pista_id.",
-    '".$fecha_hora."'
-    );";
-
-$resultado = $conexion->query($sql);
-
-// Redirigir a la página de éxito
-echo "Reserva realizada con éxito.";
+// Formulario autoenviado
+echo '
+<form id="autoForm" action="../reserva.php?c='.$c.'&confirmacion='.$confirmacion.'" method="POST">
+    <input type="hidden" name="pista_id" value="'.$pista_id.'">
+    <input type="hidden" name="fecha" value="'.$fecha.'">
+    <input type="hidden" name="hora" value="'.$hora.'">
+</form>
+<script>
+    document.getElementById("autoForm").submit();
+</script>';
 exit;
 ?>
