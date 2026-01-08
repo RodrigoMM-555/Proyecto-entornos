@@ -12,6 +12,7 @@
             <img src="../imagenes/logo.png" alt="logo">
             <h1>Book a court</h1>
         </div>
+        <button type="button" onclick="history.back()">&larr; Atrás</button>
         <!-- <nav>
             <ul>
                 <h2><a href=".php">Tenis</a></h2>
