@@ -15,6 +15,7 @@
             <p class="email_invalid">Email invalido</p>
             <p class="password_length">La contraseña debe tener entre 8 y 24 caracteres</p>
             <p class="password_special">La contraseña no puede tener caracteres especiales</p>
+            <p class="password_format">La contraseña debe contener al menos una letra y un número</p>
             <input type="submit" value="Registrarse">
         </form>
     </main>
@@ -132,6 +133,15 @@ if (isset($_GET["error"]) && $_GET["error"] == "password_special") {
 } else {
     echo "<script>
         document.querySelector('form p.password_special').style.display = 'none';
+    </script>";
+}
+if (isset($_GET["error"]) && $_GET["error"] == "password_format") {
+    echo "<script>
+        document.querySelector('form p.password_format').style.display = 'block';
+    </script>";
+} else {
+    echo "<script>
+        document.querySelector('form p.password_format').style.display = 'none';
     </script>";
 }
 ?>

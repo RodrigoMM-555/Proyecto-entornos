@@ -21,6 +21,11 @@ if (!preg_match('/^[a-zA-Z0-9]+$/', $password)) {
     header("Location: ../registro.php?error=password_special");
     exit;
 }
+//Verficar que tenga al menos una letra y un numero
+if (!preg_match('/^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z0-9]+$/', $password)) {
+    header("Location: ../registro.php?error=password_format");
+    exit;
+}
 
 // Verificar si el email ya existe
 $sql = "SELECT id FROM usuarios WHERE email = ? LIMIT 1";
