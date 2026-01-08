@@ -40,7 +40,7 @@
 
     header {
         background: linear-gradient(135deg, #8bc6a8, #b2cdab);
-        padding: 20px 0;
+        padding-top: 25px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
@@ -48,7 +48,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 15px;
     }
 
     header div img {
@@ -72,24 +71,22 @@
         padding: 15px 0;
         background-color: #f0f1e9;
     }
-/* 
-    nav ul h2 {
-        font-size: 1.2rem;
-    }
-
-    nav ul h2 a {
+    header button {
+        margin-top: -100px;
+        padding: 8px;
+        margin-left: 50px;
         text-decoration: none;
-        color: #2f4f3a;
-        padding: 8px 18px;
-        border-radius: 20px;
+        background-color: #f6f7f3;
+        font-size: 15px;
+        font-weight: 500;
+        border: none;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
         transition: all 0.3s ease;
-        background-color: transparent;
     }
 
-    nav ul h2 a:hover {
-        background-color: #8bc6a8;
+    header button:hover {
+        background-color: transparent;
         color: white;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
- */
 </style>
