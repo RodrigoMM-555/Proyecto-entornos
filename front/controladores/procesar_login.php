@@ -22,14 +22,18 @@ $sql = "SELECT password FROM usuarios WHERE email = ? LIMIT 1";
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("s", $email);
 $stmt->execute();
-
 $stored_password = $stmt->get_result()->fetch_assoc()['password'];
 
-if ($password !== $stored_password) {
+//Codificar la contraseña que entra para comparar con la almacenada
+$password_codifica = password_hash($password, PASSWORD_BCRYPT);
+
+
+// Verificar si la contraseña es correcta
+if (!password_verify($password, $stored_password)) {
     header("Location: ../index.php?error=invalid");
     exit;
+} else {
+    // Iniciar sesión
+    header("Location: ../menu.php?c=$email");
+    exit;
 }
-
-// Login correcto
-header("Location: ../menu.php?c=$email");
-exit;

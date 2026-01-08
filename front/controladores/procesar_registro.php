@@ -39,10 +39,13 @@ if ($resultado->num_rows > 0) {
     exit;
 }
 
+//Codificar la contraseña
+$password_codifica = password_hash($password, PASSWORD_BCRYPT);
+
 // Insertar nuevo usuario
 $sql = "INSERT INTO usuarios (id, email, password) VALUES (NULL, ?, ?)";
 $stmt = $conexion->prepare($sql);
-$stmt->bind_param("ss", $email, $password);
+$stmt->bind_param("ss", $email, $password_codifica);
 $stmt->execute();
 
 echo "Usuario registrado correctamente";
