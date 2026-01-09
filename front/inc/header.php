@@ -13,15 +13,12 @@
             <h1>Book a court</h1>
         </div>
         <button type="button" onclick="history.back()">&larr; Atrás</button>
-        <!-- <nav>
+        <nav>
             <ul>
-                <h2><a href=".php">Tenis</a></h2>
-                <h2><a href=".php">Padel</a></h2>
-                <h2><a href=".php">Futbol</a></h2>
-                <h2><a href=".php">Baloncesto</a></h2>
-                <h2><a href=".php">Fronton</a></h2>
+                <a href="menu.php?c=<?= $_GET["c"]?>">Polideportivos</a>
+                <a href="vista_reservas.php?c=<?= $_GET["c"]?>">Reservas</a>
             </ul>
-        </nav> -->
+        </nav>
     </header>
     <main>
 
@@ -76,7 +73,7 @@
         padding: 8px;
         margin-left: 50px;
         text-decoration: none;
-        background-color: #f6f7f3;
+        background-color: #f0f1e9;
         font-size: 15px;
         font-weight: 500;
         border: none;
@@ -88,5 +85,22 @@
     header button:hover {
         background-color: transparent;
         color: white;
+    }
+
+        header a {
+        align-self: flex-start;
+        text-decoration: none;
+        color: #2f4f3a;
+        padding: 8px 20px;
+        border-radius: 20px;
+        background-color: #f6f7f3;
+        border: 2px solid #c8c9c6ff;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    header a:hover {
+        scale: 1.1;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 </style>

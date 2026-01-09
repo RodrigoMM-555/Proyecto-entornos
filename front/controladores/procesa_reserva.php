@@ -1,8 +1,6 @@
 <?php
 include("../inc/conexion_bd.php");
 
-session_start();
-unset($_SESSION['pista_id'], $_SESSION['fecha'], $_SESSION['hora']);
 
 $pista_id = $_POST['pista_id'];
 $fecha = $_POST['fecha'];
