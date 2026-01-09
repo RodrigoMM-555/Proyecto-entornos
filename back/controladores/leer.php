@@ -8,6 +8,7 @@
         foreach($fila as $clave=>$valor){
             echo "<th>".$clave."</th>";
         }
+        echo "<th>Eliminar</th>";
         echo "</tr>";
         }
     ?>
@@ -20,6 +21,7 @@
         foreach($fila as $clave=>$valor){
             echo "<td>".$valor."</td>";
         }
+        echo '<td><a class="eliminar" href="controladores/procesaeliminar.php?tabla='.$_GET['tabla'].'&id='.$fila['id'].'">❌</a></td>';  
         echo "</tr>";
         }
     ?>

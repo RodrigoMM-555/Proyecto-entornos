@@ -69,6 +69,11 @@ th, td {
     color: #2f4f3a;
 }
 
+td a.eliminar {
+    text-decoration: none;
+    justify-content: center;
+}
+
 th {
     background-color: #6aa98b;
     color: white;
