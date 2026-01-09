@@ -25,7 +25,7 @@
     }
 
     body {
-        background-color: #f6f7f3;
+        background: linear-gradient(#8bc6a8, #b2cdab);;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -33,7 +33,7 @@
     }
 
     main {
-        background-color: #f0f1e9;
+        background-color: #f6f7f3;
         padding: 35px 30px;
         width: 320px;
         border-radius: 16px;
