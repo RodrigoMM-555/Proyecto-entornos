@@ -8,3 +8,5 @@
 11. Pagina de perfil
 
 12. Mostrar que horas ya estan pilladas
+
+13. Que los usuarios puedna eliminar reservas
