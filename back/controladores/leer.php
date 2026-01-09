@@ -26,6 +26,13 @@
         }
     ?>
 </table>
+<p>|</p>
+
+<style>
+    p{
+        color: #f6f7f3;
+    }
+</style>
 
 <a href="?operacion=insertar&tabla=<?= $_GET['tabla'] ?>" class="boton_insertar">+</a>
 
