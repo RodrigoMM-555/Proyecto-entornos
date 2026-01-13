@@ -36,7 +36,7 @@ if ($stmt->num_rows > 0) {
 
 // Formulario autoenviado
 echo '
-<form id="autoForm" action="../reserva.php?c='.$_SESSION["usuario"].'&confirmacion='.$confirmacion.'" method="POST">
+<form id="autoForm" action="../reserva.php?confirmacion='.$confirmacion.'" method="POST">
     <input type="hidden" name="pista_id" value="'.$pista_id.'">
     <input type="hidden" name="fecha" value="'.$fecha.'">
     <input type="hidden" name="hora" value="'.$hora.'">
