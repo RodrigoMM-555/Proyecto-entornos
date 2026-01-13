@@ -13,13 +13,13 @@
             <h1>Book a court</h1>
         </div>
         <button type="button" onclick="history.back()">&larr; Atrás</button>
-        <nav>
-            <ul>
-                <a href="menu.php?c=<?= $_GET["c"]?>">Polideportivos</a>
-                <a href="vista_reservas.php?c=<?= $_GET["c"]?>">Reservas</a>
-            </ul>
-        </nav>
     </header>
+    <nav>
+        <ul>
+            <a href="menu.php?c=<?= $_GET["c"]?>">Polideportivos</a>
+            <a href="vista_reservas.php?c=<?= $_GET["c"]?>">Reservas</a>
+        </ul>
+    </nav>
     <main>
 
 
@@ -68,6 +68,7 @@
         padding: 15px 0;
         background-color: #f0f1e9;
     }
+    
     header button {
         margin-top: -100px;
         padding: 8px;
@@ -87,7 +88,7 @@
         color: white;
     }
 
-        header a {
+    a {
         align-self: flex-start;
         text-decoration: none;
         color: #2f4f3a;
@@ -99,7 +100,7 @@
         transition: all 0.3s ease;
     }
 
-    header a:hover {
+    a:hover {
         scale: 1.1;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
