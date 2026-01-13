@@ -2,11 +2,11 @@
 include("inc/conexion_bd.php");
 include("inc/header.php");
 
-$c= $_GET['c'];
+session_start();
 
 // Obtener el id de usuario
 $stmt = $conexion->prepare("SELECT id FROM usuarios WHERE email = ? LIMIT 1");
-$stmt->bind_param("s", $c);
+$stmt->bind_param("s", $_SESSION["usuario"]);
 $stmt->execute();
 $resultado = $stmt->get_result();
 $fila = $resultado->fetch_assoc();
@@ -40,7 +40,7 @@ $resultado = $conexion->query($sql);
 ?>
     <!-- Por ultimo por cada reserva pintamos un article -->
     <article>
-            <h3><?= $polideportivo_nombre ?><a href="controladores/procesa_eliminar_reserva.php?reserva_id=<?= $reserva_id ?>&c=<?= $c ?>">❌</a></h3>
+            <h3><?= $polideportivo_nombre ?><a href="controladores/procesa_eliminar_reserva.php?reserva_id=<?= $reserva_id ?>">❌</a></h3>
             <p>Direccion: <?= $polideportivo_direccion ?></p>
             <h2><?= $deporte ?></h2>
             <p><?= $caracteristicas ?></p>

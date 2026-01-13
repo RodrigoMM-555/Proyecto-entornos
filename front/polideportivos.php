@@ -2,8 +2,6 @@
 include("inc/conexion_bd.php");
 include("inc/header.php");
 
-$c = $_GET['c'];
-
 ?>
 <div>
     <!-- Seccion izquierda -->
@@ -39,7 +37,7 @@ $c = $_GET['c'];
             <h3>Pista de <?= $fila['deporte'] ?></h3>
             <p>Precio: <?= $fila['precio'] ?>€/hora</p>
 
-            <form action="reserva.php?c=<?= $c ?>" method="POST">
+            <form action="reserva.php" method="POST">
                 <!-- Campo para seleccionar la fecha -->
                 <label for="fecha">Selecciona la fecha:</label>
                 <input type="date" name="fecha" required>

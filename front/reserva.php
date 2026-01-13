@@ -2,7 +2,6 @@
 include("inc/conexion_bd.php");
 include("inc/header.php");
 
-$c = $_GET['c'];
 
 $fecha = $_POST['fecha'];
 $hora = $_POST['hora'];
@@ -18,7 +17,7 @@ $hora_num = (int)explode(':', $hora)[0];  // Extraemos solo la hora numérica
 <p>Reservar la pista de <?= $fila['deporte'] ?> de <?= $hora_num ?> a <?= $hora_num + 1 ?>:00 el <?= $fecha ?></p>
 <p class="confirmacion"><?= $texto_confirmacion ?></p>
 
-<form action="controladores/procesa_reserva.php?c=<?= $c ?>" method="POST">
+<form action="controladores/procesa_reserva.php" method="POST">
     <input type="hidden" name="pista_id" value="<?= $pista_id ?>">
     <input type="hidden" name="fecha" value="<?= $fecha ?>">
     <input type="hidden" name="hora" value="<?= $hora ?>">

@@ -34,6 +34,8 @@ if (!password_verify($password, $stored_password)) {
     exit;
 } else {
     // Iniciar sesión
-    header("Location: ../menu.php?c=$email");
+    session_start();
+    $_SESSION["usuario"] = $email;
+    header("Location: ../menu.php");
     exit;
 }

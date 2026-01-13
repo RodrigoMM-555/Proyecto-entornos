@@ -16,8 +16,8 @@
     </header>
     <nav>
         <ul>
-            <a href="menu.php?c=<?= $_GET["c"]?>">Polideportivos</a>
-            <a href="vista_reservas.php?c=<?= $_GET["c"]?>">Reservas</a>
+            <a href="menu.php">Polideportivos</a>
+            <a href="vista_reservas.php">Reservas</a>
         </ul>
     </nav>
     <main>

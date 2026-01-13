@@ -2,7 +2,7 @@
 include("inc/conexion_bd.php");
 include("inc/header.php");
 
-$c = $_GET['c'];
+session_start();
 
     $sql = "SELECT * FROM polideportivos;";
 
@@ -14,7 +14,7 @@ $c = $_GET['c'];
         <div>
             <h3><?= $fila['nombre'] ?></h3>
             <p><?= $fila['direccion'] ?></p>
-            <a href="polideportivos.php?id=<?= $fila['id'] ?>&c=<?= $c ?>">Ver mas</a>
+            <a href="polideportivos.php?id=<?= $fila['id'] ?>">Ver mas</a>
         </div>
     </article>
 <?php
