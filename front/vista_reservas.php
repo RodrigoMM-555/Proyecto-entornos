@@ -18,6 +18,7 @@ $resultado = $conexion->query($sql);
     //De cada reserva queremos los siguientes datos
     while ($fila = $resultado->fetch_assoc()) {
         //ID de la pista y la fehca y hora de la reserva
+        $reserva_id = $fila["id"];
         $pista_id = $fila["pista_id"];
         $fecha_hora = $fila["fecha_hora"];
         //Con la id de la pista pedimos informacion sobre la misma y la ID de su polideportivo
@@ -39,15 +40,13 @@ $resultado = $conexion->query($sql);
 ?>
     <!-- Por ultimo por cada reserva pintamos un article -->
     <article>
-        <div>
-            <h3><?= $polideportivo_nombre ?></h3>
+            <h3><?= $polideportivo_nombre ?><a href="controladores/procesa_eliminar_reserva.php?reserva_id=<?= $reserva_id ?>&c=<?= $c ?>">❌</a></h3>
             <p>Direccion: <?= $polideportivo_direccion ?></p>
             <h2><?= $deporte ?></h2>
             <p><?= $caracteristicas ?></p>
             <p>Maximo de personas: <?= $max_personas ?></p>
             <p>Precio: <?= $precio ?>€/hora</p>
             <p><?= $fecha_hora ?></p>
-        </div>
     </article>
 
 <?php
@@ -61,21 +60,25 @@ include("inc/footer.php");
 <style>
     main {
         background-color: #f6f7f3;
-        padding: 30px;
+        margin-top: 20px;
         display: grid;
         grid-template-columns: repeat(3,1fr);
-        gap: 20px;
+        justify-items: center;
+
     }
 
     article {
         display: flex;
-        align-items: center;
-        max-width: 800px;
+        max-width: 500px;
         padding: 20px 25px;
         background-color: #f0f1e9;
         border-radius: 18px;
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
         transition: all 0.3s ease;
+        flex-direction: column;
+        margin-top: 10px;
+        gap: 10px;
+        text-align: left;
 
     }
 
@@ -84,16 +87,14 @@ include("inc/footer.php");
 
     }
 
-    article div {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        text-align: left;
-    }
-
     article h3 {
+        display: flex;
+        justify-content: space-between;
         color: #2f4f3a;
         font-size: 1.4rem;
+    }
+    article h3 a {
+        text-decoration: none;
     }
 
     article p {
