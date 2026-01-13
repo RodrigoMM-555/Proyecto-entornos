@@ -63,15 +63,14 @@ table {
     background-color: #f0f1e9;
 }
 
+td a.eliminar {
+    text-decoration: none;
+}
+
 th, td {
     padding: 12px 18px;
     text-align: left;
     color: #2f4f3a;
-}
-
-td a.eliminar {
-    text-decoration: none;
-    justify-content: center;
 }
 
 th {
@@ -86,7 +85,6 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #d9e6dc;
-    cursor: pointer;
 }
 
 /* Botón de insertar */
